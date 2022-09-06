@@ -5,8 +5,8 @@ SHELL ["/bin/bash", "-c"]
 RUN sed -e 's|^mirrorlist=|#mirrorlist=|g' \
          -e 's|^#baseurl=http://mirror.centos.org/centos|baseurl=https://mirrors.ustc.edu.cn/centos|g' \
          -i.bak \
-         /etc/yum.repos.d/CentOS-Base.repo
-
-RUN sed -i -e '/plugins=1/d' -e '/plugins=0/d' /etc/yum.conf
-
-RUN cat /etc/yum.repos.d/CentOS-Base.repo && yum install epel-release curl -y && yum clean all && rm -rf /var/cache/yum
+         /etc/yum.repos.d/CentOS-Base.repo && \
+ sed -i -e '/plugins=1/d' -e '/plugins=0/d' /etc/yum.conf && \
+ cat /etc/yum.repos.d/CentOS-Base.repo && \
+ yum install epel-release curl -y && \
+ yum clean all && rm -rf /var/cache/yum
