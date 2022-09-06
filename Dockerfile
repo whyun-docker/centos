@@ -9,4 +9,4 @@ RUN sed -e 's|^mirrorlist=|#mirrorlist=|g' \
 
 RUN sed -i -e '/plugins=1/d' -e '/plugins=0/d' /etc/yum.conf
 
-RUN yum install epel-release curl -y && yum clean all && rm -rf /var/cache/yum
+RUN cat /etc/yum.repos.d/CentOS-Base.repo && yum install epel-release curl -y && yum clean all && rm -rf /var/cache/yum
